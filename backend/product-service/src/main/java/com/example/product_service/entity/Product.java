@@ -14,8 +14,12 @@ public class Product {
     private BigDecimal price;
     @Column(nullable = false)
     private Integer quantity;
-    private Long categoryId;
-    private Long brandId;
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "category_id")
+    private Category category;
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "brand_id")
+    private Brand brand;
     public Long getId() { return id; }
     public void setId(Long value) { this.id = value; }
     public String getName() { return name; }
@@ -24,8 +28,8 @@ public class Product {
     public void setPrice(BigDecimal value) { this.price = value; }
     public Integer getQuantity() { return quantity; }
     public void setQuantity(Integer value) { this.quantity = value; }
-    public Long getCategoryId() { return categoryId; }
-    public void setCategoryId(Long value) { this.categoryId = value; }
-    public Long getBrandId() { return brandId; }
-    public void setBrandId(Long value) { this.brandId = value; }
+    public Category getCategory() { return category; }
+    public void setCategory(Category value) { this.category = value; }
+    public Brand getBrand() { return brand; }
+    public void setBrand(Brand value) { this.brand = value; }
 }

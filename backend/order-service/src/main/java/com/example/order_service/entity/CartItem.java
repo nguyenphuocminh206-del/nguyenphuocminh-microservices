@@ -7,16 +7,17 @@ public class CartItem {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    @Column(nullable = false)
-    private Long cartId;
+    @ManyToOne(fetch = FetchType.LAZY, optional = false)
+    @JoinColumn(name = "cart_id", nullable = false)
+    private Cart cart;
     @Column(nullable = false)
     private Long productId;
     @Column(nullable = false)
     private Integer quantity;
     public Long getId() { return id; }
     public void setId(Long value) { this.id = value; }
-    public Long getCartId() { return cartId; }
-    public void setCartId(Long value) { this.cartId = value; }
+    public Cart getCart() { return cart; }
+    public void setCart(Cart value) { this.cart = value; }
     public Long getProductId() { return productId; }
     public void setProductId(Long value) { this.productId = value; }
     public Integer getQuantity() { return quantity; }
